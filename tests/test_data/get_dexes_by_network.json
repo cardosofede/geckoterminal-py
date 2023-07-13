@@ -1,0 +1,262 @@
+{
+  "data": [
+    {
+      "id": "uniswap_v2",
+      "type": "dex",
+      "attributes": {
+        "name": "Uniswap V2"
+      }
+    },
+    {
+      "id": "sushiswap",
+      "type": "dex",
+      "attributes": {
+        "name": "SushiSwap"
+      }
+    },
+    {
+      "id": "uniswap_v3",
+      "type": "dex",
+      "attributes": {
+        "name": "Uniswap V3"
+      }
+    },
+    {
+      "id": "shibaswap",
+      "type": "dex",
+      "attributes": {
+        "name": "Shibaswap"
+      }
+    },
+    {
+      "id": "templedao",
+      "type": "dex",
+      "attributes": {
+        "name": "TempleDAO"
+      }
+    },
+    {
+      "id": "standard_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Standard (Ethereum)"
+      }
+    },
+    {
+      "id": "swapr_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Swapr (Ethereum)"
+      }
+    },
+    {
+      "id": "degenswap",
+      "type": "dex",
+      "attributes": {
+        "name": "DegenSwap"
+      }
+    },
+    {
+      "id": "concave",
+      "type": "dex",
+      "attributes": {
+        "name": "Concave"
+      }
+    },
+    {
+      "id": "radioshack_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "RadioShack (Ethereum)"
+      }
+    },
+    {
+      "id": "elk_finance_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Elk Finance (Ethereum)"
+      }
+    },
+    {
+      "id": "integral_size",
+      "type": "dex",
+      "attributes": {
+        "name": "Integral SIZE"
+      }
+    },
+    {
+      "id": "kyberswap_elastic",
+      "type": "dex",
+      "attributes": {
+        "name": "KyberSwap Elastic"
+      }
+    },
+    {
+      "id": "fraxswap_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Fraxswap (Ethereum)"
+      }
+    },
+    {
+      "id": "defi_swap",
+      "type": "dex",
+      "attributes": {
+        "name": "Defi Swap"
+      }
+    },
+    {
+      "id": "curve",
+      "type": "dex",
+      "attributes": {
+        "name": "Curve"
+      }
+    },
+    {
+      "id": "apeswap_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "ApeSwap (Ethereum)"
+      }
+    },
+    {
+      "id": "sakeswap",
+      "type": "dex",
+      "attributes": {
+        "name": "SakeSwap"
+      }
+    },
+    {
+      "id": "dooar_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "DOOAR (Ethereum)"
+      }
+    },
+    {
+      "id": "spice_trade_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Spice Trade (Ethereum)"
+      }
+    },
+    {
+      "id": "unicly",
+      "type": "dex",
+      "attributes": {
+        "name": "Unicly"
+      }
+    },
+    {
+      "id": "verse",
+      "type": "dex",
+      "attributes": {
+        "name": "Verse"
+      }
+    },
+    {
+      "id": "pancakeswap_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Pancakeswap (Ethereum)"
+      }
+    },
+    {
+      "id": "kyberswap_classic_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Kyberswap Classic (Ethereum)"
+      }
+    },
+    {
+      "id": "safemoonswap_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "SafemoonSwap (Ethereum)"
+      }
+    },
+    {
+      "id": "balancer_ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Balancer V2 (Ethereum)"
+      }
+    },
+    {
+      "id": "solidlydex",
+      "type": "dex",
+      "attributes": {
+        "name": "Solidly"
+      }
+    },
+    {
+      "id": "antfarm",
+      "type": "dex",
+      "attributes": {
+        "name": "Antfarm"
+      }
+    },
+    {
+      "id": "pancakeswap-v3-ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Pancakeswap V3 (Ethereum)"
+      }
+    },
+    {
+      "id": "smardex",
+      "type": "dex",
+      "attributes": {
+        "name": "SmarDex"
+      }
+    },
+    {
+      "id": "whiteswap",
+      "type": "dex",
+      "attributes": {
+        "name": "Whiteswap"
+      }
+    },
+    {
+      "id": "saitaswap-ethereum",
+      "type": "dex",
+      "attributes": {
+        "name": "Saitaswap (Ethereum)"
+      }
+    },
+    {
+      "id": "surge-protocol-eth",
+      "type": "dex",
+      "attributes": {
+        "name": "Surge Protocol (ETH)"
+      }
+    },
+    {
+      "id": "sashimiswap",
+      "type": "dex",
+      "attributes": {
+        "name": "Sashimiswap"
+      }
+    },
+    {
+      "id": "pepedex",
+      "type": "dex",
+      "attributes": {
+        "name": "Pepedex"
+      }
+    },
+    {
+      "id": "x7-finance",
+      "type": "dex",
+      "attributes": {
+        "name": "x7 Finance"
+      }
+    }
+  ],
+  "links": {
+    "first": "https://api.geckoterminal.com/api/v2/networks/eth/dexes?page=1",
+    "prev": null,
+    "next": null,
+    "last": "https://api.geckoterminal.com/api/v2/networks/eth/dexes?page=1"
+  }
+}
