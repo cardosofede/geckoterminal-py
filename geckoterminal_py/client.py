@@ -164,3 +164,8 @@ class GeckoTerminalClient:
                           columns=["timestamp", "open", "high", "low", "close", "volume_usd"])
         df["datetime"] = pd.to_datetime(df["timestamp"], unit="s")
         return df.drop_duplicates(subset="timestamp").sort_values("datetime").reset_index(drop=True)
+
+    def get_ohlcv_sync(self, network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None,
+                       currency: str = "usd", token: str = "base", limit: int = 1000) -> pd.DataFrame:
+        return self.ev_loop.run_until_complete(self.get_ohlcv(network_id, pool_address, timeframe, before_timestamp,
+                                                              currency, token, limit))
