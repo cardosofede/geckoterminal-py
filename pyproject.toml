@@ -8,6 +8,29 @@ packages = [{include = "geckoterminal_py"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+ruff = "^0.0.278"
+pre-commit = "^3.3.3"
+isort = "^5.12.0"
+aiohttp = "^3.8.4"
+aiodns = "^3.0.0"
+cchardet = "^2.1.7"
+aioresponses = "^0.7.4"
+glom = "^23.3.0"
+pandas = "^2.0.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.1"
+coverage = "^7.2.7"
+
+
+[tool.ruff]
+# Decrease the maximum line length to 79 characters.
+line-length = 100
+src = ["src"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 
 [build-system]
