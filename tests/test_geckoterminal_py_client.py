@@ -97,3 +97,59 @@ class TestGeckoTerminalPyClient:
         assert isinstance(ohlcv, pd.DataFrame)
         assert ohlcv.columns.tolist() == ["timestamp", "open", "high", "low", "close", "volume_usd", "datetime"]
         assert all(ohlcv["datetime"] < pd.to_datetime(before_timestamp, unit="s"))
+
+    def test_get_networks_sync(self, client, mock_api):
+        response = get_response_from_file("get_networks")
+        mock_api.get("https://api.geckoterminal.com/api/v2/networks", payload=response)
+        networks = client.get_networks_sync()
+        assert isinstance(networks, pd.DataFrame)
+        assert networks.columns.tolist() == self.networks_columns
+        assert all(networks["type"] == "network")
+
+    def test_get_dexes_by_network_sync(self, client, mock_api):
+        response = get_response_from_file("get_dexes_by_network")
+        mock_api.get("https://api.geckoterminal.com/api/v2/networks/ethereum/dexes", payload=response)
+        dexes = client.get_dexes_by_network_sync(network_id="ethereum")
+        assert isinstance(dexes, pd.DataFrame)
+        assert dexes.columns.tolist() == self.dexes_columns
+        assert all(dexes["type"] == "dex")
+
+    def test_get_top_pools_by_network_sync(self, client, mock_api):
+        response = get_response_from_file("get_top_pools_by_network")
+        mock_api.get("https://api.geckoterminal.com/api/v2/networks/eth/pools", payload=response)
+        top_pools = client.get_top_pools_by_network_sync(network_id="eth")
+        assert isinstance(top_pools, pd.DataFrame)
+        assert top_pools.columns.tolist() == self.pools_columns
+        assert all(top_pools["network_id"] == "eth")
+
+    def test_get_top_pools_by_network_dex_sync(self, client, mock_api):
+        response = get_response_from_file("get_top_pools_by_network_dex")
+        mock_api.get("https://api.geckoterminal.com/api/v2/networks/eth/dexes/sushiswap/pools", payload=response)
+        top_pools = client.get_top_pools_by_network_dex_sync(network_id="eth", dex_id="sushiswap")
+        assert isinstance(top_pools, pd.DataFrame)
+        assert top_pools.columns.tolist() == self.pools_columns
+        assert all(top_pools["network_id"] == "eth")
+        assert all(top_pools["dex_id"] == "sushiswap")
+
+    def test_get_top_pools_by_network_token_sync(self, client, mock_api):
+        response = get_response_from_file("get_top_pools_by_network_token")
+        mock_api.get(url="https://api.geckoterminal.com/api/v2/networks/eth/"
+                         "tokens/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48/pools", payload=response)
+        top_pools = client.get_top_pools_by_network_token_sync(network_id="eth",
+                                                               token_id="0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48")
+        assert isinstance(top_pools, pd.DataFrame)
+        assert top_pools.columns.tolist() == self.pools_columns
+        assert all(top_pools["network_id"] == "eth")
+        assert all((top_pools["base_token_id"] == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48") |
+                   (top_pools["quote_token_id"] == "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"))
+
+    def test_get_ohlcv_sync(self, client, mock_api):
+        response = get_response_from_file("get_ohlcv")
+        mock_api.get(url="https://api.geckoterminal.com/api/v2/networks/eth/pools/"
+                            "0x60594a405d53811d3bc4766596efd80fd545a270/ohlcv/minute?aggregate=15&before_timestamp=1689280680&currency=usd&limit=1000&token=base",
+                        payload=response)
+        ohlcv = client.get_ohlcv_sync(network_id="eth", pool_address="0x60594a405d53811d3bc4766596efd80fd545a270",
+                                        timeframe="15m", before_timestamp=1689280680)
+        assert isinstance(ohlcv, pd.DataFrame)
+        assert ohlcv.columns.tolist() == ["timestamp", "open", "high", "low", "close", "volume_usd", "datetime"]
+        assert all(ohlcv["datetime"] < pd.to_datetime(1689280680, unit="s"))
