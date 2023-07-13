@@ -22,6 +22,10 @@ pandas = "^2.0.3"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
 
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.2.7"
+
 [tool.ruff]
 # Decrease the maximum line length to 79 characters.
 line-length = 100
