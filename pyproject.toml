@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geckoterminal-py"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["cardosofede <federico.cardoso.e@gmail.com>"]
 readme = "README.md"
