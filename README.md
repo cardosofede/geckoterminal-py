@@ -26,6 +26,7 @@ async def main():
     client = GeckoTerminalClient()
     networks_df = await client.get_networks()
     print(networks_df)
+    client.close()
 
 # In an asyncio environment, you'd use:
 asyncio.run(main())
@@ -40,6 +41,7 @@ def main():
     client = GeckoTerminalClient()
     networks_df = client.get_networks_sync()
     print(networks_df)
+    client.close()
 
 main()
 ```
