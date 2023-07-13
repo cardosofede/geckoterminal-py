@@ -1,6 +1,6 @@
 # GeckoTerminal Py
 
-GeckoTerminal Py is a Python client for the [GeckoTerminal]([https://www.geckoterminal.com]). It provides a user-friendly way to fetch network and pool data asynchronously or synchronously.
+GeckoTerminal Py is a Python client for the [GeckoTerminal](https://www.geckoterminal.com). It provides a user-friendly way to fetch network and pool data asynchronously or synchronously.
 
 ## Installation
 
