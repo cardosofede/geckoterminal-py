@@ -1,6 +1,6 @@
 # GeckoTerminal Py
 
-GeckoTerminal Py is a Python client for the [GeckoTerminal API](https://api.geckoterminal.com/api/v2). It provides a user-friendly way to fetch network and pool data asynchronously or synchronously.
+GeckoTerminal Py is a Python client for the [GeckoTerminal](https://www.geckoterminal.com). It provides a user-friendly way to fetch network and pool data asynchronously or synchronously.
 
 ## Installation
 
@@ -26,6 +26,7 @@ async def main():
     client = GeckoTerminalClient()
     networks_df = await client.get_networks()
     print(networks_df)
+    client.close()
 
 # In an asyncio environment, you'd use:
 asyncio.run(main())
@@ -40,6 +41,7 @@ def main():
     client = GeckoTerminalClient()
     networks_df = client.get_networks_sync()
     print(networks_df)
+    client.close()
 
 main()
 ```
