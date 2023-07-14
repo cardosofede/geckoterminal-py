@@ -1,8 +1,5 @@
-import json
-
 import pandas as pd
 import pytest
-from glom import glom
 from aioresponses import aioresponses
 
 from geckoterminal_py.client import GeckoTerminalClient
@@ -146,10 +143,18 @@ class TestGeckoTerminalPyClient:
     def test_get_ohlcv_sync(self, client, mock_api):
         response = get_response_from_file("get_ohlcv")
         mock_api.get(url="https://api.geckoterminal.com/api/v2/networks/eth/pools/"
-                            "0x60594a405d53811d3bc4766596efd80fd545a270/ohlcv/minute?aggregate=15&before_timestamp=1689280680&currency=usd&limit=1000&token=base",
-                        payload=response)
+                         "0x60594a405d53811d3bc4766596efd80fd545a270/ohlcv/minute?aggregate=15&before_timestamp=1689280680&currency=usd&limit=1000&token=base",
+                     payload=response)
         ohlcv = client.get_ohlcv_sync(network_id="eth", pool_address="0x60594a405d53811d3bc4766596efd80fd545a270",
-                                        timeframe="15m", before_timestamp=1689280680)
+                                      timeframe="15m", before_timestamp=1689280680)
         assert isinstance(ohlcv, pd.DataFrame)
         assert ohlcv.columns.tolist() == ["timestamp", "open", "high", "low", "close", "volume_usd", "datetime"]
         assert all(ohlcv["datetime"] < pd.to_datetime(1689280680, unit="s"))
+
+    @pytest.mark.asyncio
+    async def test_ohlcv_raises_exception_timeframe(self, client):
+        timeframe = "16m"
+        with pytest.raises(ValueError) as timeframe_error:
+            await client.get_ohlcv(network_id="eth", pool_address="0x60594a405d53811d3bc4766596efd80fd545a270",
+                                   timeframe=timeframe)
+            assert f"Timeframe {timeframe} is not supported." in str(timeframe_error.value)
