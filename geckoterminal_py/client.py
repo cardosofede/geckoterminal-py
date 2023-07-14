@@ -147,6 +147,9 @@ class GeckoTerminalClient:
 
     async def get_ohlcv(self, network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None,
                         currency: str = "usd", token: str = "base", limit: int = 1000) -> pd.DataFrame:
+        if timeframe not in self.ohlcv_timeframes:
+            raise ValueError(f"Timeframe {timeframe} is not supported. Please select one timeframe of the following"
+                             f"list {self.ohlcv_timeframes}")
         timeframe, period = self.get_timeframe_and_period(timeframe)
         response = await self.api_request("GET",
                                           CONSTANTS.GET_OHLCV_DATA_PATH.format(network_id,
