@@ -8,7 +8,6 @@ packages = [{include = "geckoterminal_py"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-aiohttp = "^3.8.4"
 aiodns = "^3.0.0"
 cchardet = "^2.1.7"
 aioresponses = "^0.7.4"
@@ -26,6 +25,7 @@ coverage = "^7.2.7"
 ruff = "^0.0.278"
 pre-commit = "^3.3.3"
 isort = "^5.12.0"
+jupyter = "^1.0.0"
 
 [tool.ruff]
 # Decrease the maximum line length to 79 characters.
