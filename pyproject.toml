@@ -7,13 +7,13 @@ readme = "README.md"
 packages = [{include = "geckoterminal_py"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-aiohttp = "^3.8.4"
+python = "^3.10"
 aiodns = "^3.0.0"
 cchardet = "^2.1.7"
 aioresponses = "^0.7.4"
 glom = "^23.3.0"
 pandas = "^2.0.3"
+httpx = "^0.27.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
@@ -25,6 +25,7 @@ coverage = "^7.2.7"
 ruff = "^0.0.278"
 pre-commit = "^3.3.3"
 isort = "^5.12.0"
+jupyter = "^1.0.0"
 
 [tool.ruff]
 # Decrease the maximum line length to 79 characters.
