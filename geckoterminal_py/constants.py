@@ -10,6 +10,7 @@ GET_TOP_POOLS_BY_NETWORK_PATH = "networks/{}/pools"
 GET_TOP_POOLS_BY_NETWORK_DEX_PATH = "networks/{}/dexes/{}/pools"
 GET_NEW_POOLS_BY_NETWORK_PATH = "networks/{}/new_pools"
 GET_NEW_POOLS_ALL_NETWORKS_PATH = "networks/new_pools"
+GET_POOL_BY_NETWORK_PATH = "networks/{}/pools/{}"
 
 # Tokens
 GET_TOP_POOLS_BY_NETWORK_TOKEN_PATH = "networks/{}/tokens/{}/pools"

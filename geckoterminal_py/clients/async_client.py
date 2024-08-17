@@ -59,6 +59,11 @@ class GeckoTerminalAsyncClient(GeckoTerminalClientBase):
         new_pools_all_networks = glom(response, CONSTANTS.POOL_SPEC)
         return self.process_pools_list(new_pools_all_networks)
 
+    async def get_pool_by_network(self, network_id: str, pool_address: str) -> pd.DataFrame:
+        response = await self.api_request("GET", CONSTANTS.GET_POOL_BY_NETWORK_PATH.format(network_id, pool_address))
+        pool = glom(response, CONSTANTS.POOL_SPEC)
+        return pd.DataFrame(pool)
+
     async def get_ohlcv(self, network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None,
                         currency: str = "usd", token: str = "base", limit: int = 1000) -> pd.DataFrame:
         if timeframe not in self.ohlcv_timeframes:
