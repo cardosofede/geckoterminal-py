@@ -5,7 +5,10 @@ GET_NETWORKS_PATH = "networks"
 GET_DEXES_BY_NETWORK_PATH = "networks/{}/dexes"
 
 # Pools
+GET_TRENDING_POOLS_PATH = "networks/trending_pools"
+GET_TRENDING_POOLS_BY_NETWORK_PATH = "networks/{}/trending_pools"
 GET_POOL_BY_NETWORK_AND_ADDRESS_PATH = "networks/{}/pools/{}"
+GET_MULTIPLE_POOLS_BY_NETWORK_PATH = "networks/{}/pools/multi/{}"
 GET_TOP_POOLS_BY_NETWORK_PATH = "networks/{}/pools"
 GET_TOP_POOLS_BY_NETWORK_DEX_PATH = "networks/{}/dexes/{}/pools"
 GET_NEW_POOLS_BY_NETWORK_PATH = "networks/{}/new_pools"
@@ -17,6 +20,9 @@ GET_SPECIFIC_TOKEN_ON_NETWORK_PATH = "networks/{}/tokens/{}"
 
 # OHLCV
 GET_OHLCV_DATA_PATH = "networks/{}/pools/{}/ohlcv/{}"
+
+# Trades
+GET_TRADES_BY_NETWORK_POOL_PATH = "networks/{}/pools/{}/trades"
 
 # GLOM SPECS
 
@@ -47,3 +53,21 @@ NETWORK_SPEC = ('data', [{'id': 'id', 'type': 'type', 'name': ('attributes.name'
                           'coingecko_asset_platform_id': ('attributes.coingecko_asset_platform_id',)}])
 
 DEXES_BY_NETWORK_SPEC = ('data', [{'id': 'id', 'type': 'type', 'name': ('attributes.name',)}])
+
+TRADES_SPEC = ('data', [{'id': 'id', 'type': 'type',
+                         'block_number': ('attributes.block_number',),
+                         'tx_hash': ('attributes.tx_hash',),
+                         'tx_from_address': ('attributes.tx_from_address',),
+                         'from_token_amount': ('attributes.from_token_amount',),
+                         'to_token_amount': ('attributes.to_token_amount',),
+                         'price_from_in_currency_token': ('attributes.price_from_in_currency_token',),
+                         'price_to_in_currency_token': ('attributes.price_to_in_currency_token',),
+                         'price_from_in_usd': ('attributes.price_from_in_usd',),
+                         'price_to_in_usd': ('attributes.price_to_in_usd',),
+                         'block_timestamp': ('attributes.block_timestamp',),
+                         'side': ('attributes.kind',),
+                         'volume_usd': ('attributes.volume_in_usd',),
+                         'from_token_address': ("attributes.from_token_address",),
+                         'to_token_address': ("attributes.to_token_address",)
+                            }])
+
