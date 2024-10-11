@@ -62,3 +62,8 @@ Methods:
 - **get_new_pools_by_network(network_id: str):**
 - **get_new_pools_all_networks():**
 - **get_ohlcv(network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None, currency: str = "usd", token: str = "base", limit: int = 1000):**
+
+Endpoints to add:
+- [ ] /simple/networks/{network}/token_price/{addresses}
+- [ ] /search/pools
+- [ ] / rest of tokens list
