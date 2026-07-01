@@ -18,6 +18,11 @@ GET_NEW_POOLS_ALL_NETWORKS_PATH = "networks/new_pools"
 GET_TOP_POOLS_BY_NETWORK_TOKEN_PATH = "networks/{}/tokens/{}/pools"
 GET_SPECIFIC_TOKEN_ON_NETWORK_PATH = "networks/{}/tokens/{}"
 
+# Simple token price
+GET_SIMPLE_TOKEN_PRICE_PATH = "simple/networks/{}/token_price/{}"
+# GeckoTerminal accepts at most 30 token addresses per simple token price request.
+SIMPLE_TOKEN_PRICE_MAX_ADDRESSES = 30
+
 # OHLCV
 GET_OHLCV_DATA_PATH = "networks/{}/pools/{}/ohlcv/{}"
 

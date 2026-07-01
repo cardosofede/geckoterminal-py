@@ -1,0 +1,28 @@
+{
+  "data": {
+    "id": "8dae7f6a-7ba1-4b6f-bd54-9b0a2c3d4e5f",
+    "type": "simple_token_price",
+    "attributes": {
+      "token_prices": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": "2958.19885153499",
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "1.00155068153471"
+      },
+      "market_cap_usd": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": "9173461186",
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "32000000000"
+      },
+      "h24_volume_usd": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": "1200000000",
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "980000000"
+      },
+      "h24_price_change_percentage": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": "0.86",
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "-0.01"
+      },
+      "total_reserve_in_usd": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": "540000000",
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "410000000"
+      }
+    }
+  }
+}

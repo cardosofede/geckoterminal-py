@@ -62,8 +62,8 @@ Methods:
 - **get_new_pools_by_network(network_id: str):**
 - **get_new_pools_all_networks():**
 - **get_ohlcv(network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None, currency: str = "usd", token: str = "base", limit: int = 1000):**
+- **get_simple_token_price(network_id: str, token_addresses: list, include_market_cap: bool = False, mcap_fdv_fallback: bool = False, include_24hr_vol: bool = False, include_24hr_price_change: bool = False, include_total_reserve_in_usd: bool = False):** Fetch USD prices for up to 30 token addresses in a single call. Returns a DataFrame keyed by `token_address` with a `price_usd` column (plus optional `market_cap_usd` / `volume_usd_h24` / `price_change_percentage_h24` / `reserve_in_usd` columns when requested).
 
 Endpoints to add:
-- [ ] /simple/networks/{network}/token_price/{addresses}
 - [ ] /search/pools
 - [ ] / rest of tokens list
