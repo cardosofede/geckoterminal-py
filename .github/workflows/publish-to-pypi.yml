@@ -14,13 +14,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    environment:
-      name: pypi
-      url: https://pypi.org/p/geckoterminal-py
-
     permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
-      contents: write  # IMPORTANT: mandatory for creating releases
+      contents: write  # needed to create the GitHub release
 
     steps:
     - name: Checkout code
@@ -72,6 +67,7 @@ jobs:
       if: steps.check_version.outputs.exists == 'false'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
         print-hash: true
         verbose: true
 
