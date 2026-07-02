@@ -33,7 +33,8 @@ def unified_request_handler(request: Request) -> Response:
         "/api/v2/networks/eth/dexes/sushiswap/pools": "test_data/get_top_pools_by_network_dex.json",
         "/api/v2/networks/eth/new_pools": "test_data/get_new_pools_by_network.json",
         "/api/v2/networks/new_pools": "test_data/get_new_pools_all_networks.json",
-        "/api/v2/networks/eth/pools/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/ohlcv/hour": "test_data/get_ohlcv.json"
+        "/api/v2/networks/eth/pools/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/ohlcv/hour": "test_data/get_ohlcv.json",
+        "/api/v2/simple/networks/eth/token_price/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "test_data/get_simple_token_price.json",
     }
 
     json_file = path_to_json.get(request.url.path)
@@ -143,3 +144,32 @@ class TestGeckoTerminalSyncClient:
         assert isinstance(ohlcv, pd.DataFrame)
         expected_columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume_usd', 'datetime']
         assert list(ohlcv.columns) == expected_columns
+
+    def test_get_simple_token_price(self, client):
+        """Test fetching simple token prices for multiple addresses in a single call."""
+        prices = client.get_simple_token_price(
+            network_id="eth",
+            token_addresses=["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                             "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+            include_market_cap=True,
+            include_24hr_vol=True,
+            include_24hr_price_change=True,
+            include_total_reserve_in_usd=True,
+        )
+        assert isinstance(prices, pd.DataFrame)
+        expected_columns = ['token_address', 'price_usd', 'market_cap_usd', 'volume_usd_h24',
+                            'price_change_percentage_h24', 'reserve_in_usd']
+        assert list(prices.columns) == expected_columns
+        assert len(prices) == 2
+
+    def test_get_simple_token_price_empty(self, client):
+        """An empty address list returns an empty frame without hitting the API."""
+        prices = client.get_simple_token_price(network_id="eth", token_addresses=[])
+        assert isinstance(prices, pd.DataFrame)
+        assert list(prices.columns) == ['token_address', 'price_usd']
+        assert prices.empty
+
+    def test_get_simple_token_price_too_many(self, client):
+        """Requesting more than the per-call address limit raises a ValueError."""
+        with pytest.raises(ValueError):
+            client.get_simple_token_price(network_id="eth", token_addresses=[str(i) for i in range(31)])

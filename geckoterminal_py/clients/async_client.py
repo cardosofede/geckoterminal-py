@@ -85,6 +85,27 @@ class GeckoTerminalAsyncClient(GeckoTerminalClientBase):
         response = await self.api_request("GET", CONSTANTS.GET_SPECIFIC_TOKEN_ON_NETWORK_PATH.format(network_id, token_id))
         return response["data"]
 
+    async def get_simple_token_price(self, network_id: str, token_addresses: list,
+                                     include_market_cap: bool = False, mcap_fdv_fallback: bool = False,
+                                     include_24hr_vol: bool = False, include_24hr_price_change: bool = False,
+                                     include_total_reserve_in_usd: bool = False) -> pd.DataFrame:
+        if not token_addresses:
+            return pd.DataFrame(columns=["token_address", "price_usd"])
+        if len(token_addresses) > CONSTANTS.SIMPLE_TOKEN_PRICE_MAX_ADDRESSES:
+            raise ValueError(f"A maximum of {CONSTANTS.SIMPLE_TOKEN_PRICE_MAX_ADDRESSES} token addresses can be "
+                             f"requested per call, got {len(token_addresses)}.")
+        addresses_str = ",".join(token_addresses)
+        params = {
+            "include_market_cap": str(include_market_cap).lower(),
+            "mcap_fdv_fallback": str(mcap_fdv_fallback).lower(),
+            "include_24hr_vol": str(include_24hr_vol).lower(),
+            "include_24hr_price_change": str(include_24hr_price_change).lower(),
+            "include_total_reserve_in_usd": str(include_total_reserve_in_usd).lower(),
+        }
+        response = await self.api_request(
+            "GET", CONSTANTS.GET_SIMPLE_TOKEN_PRICE_PATH.format(network_id, addresses_str), params=params)
+        return self.process_simple_token_price(response)
+
     async def get_ohlcv(self, network_id: str, pool_address: str, timeframe: str, before_timestamp: int = None,
                         currency: str = "usd", token: str = "base", limit: int = 1000) -> pd.DataFrame:
         if timeframe not in self.ohlcv_timeframes:
